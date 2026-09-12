@@ -2,6 +2,16 @@ import pygame, sys
 
 pygame.init()
 
+#Musica de fondo
+pygame.mixer.init()
+
+fire_sound = pygame.mixer.Sound('hit.ogg')
+sonido_fondo = pygame.mixer.Sound('fallen_down.ogg')
+
+sonido_fondo.set_volume(0.2)
+sonido_fondo.play(-1)
+
+
 class Button():
     def __init__(self, image, pos, text_input, font, base_color, hovering_color):
         self.image = image
@@ -80,14 +90,14 @@ class Player(GameSprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[pygame.K_s] and self.rect.y < ventana_alto - 80:
+        if keys[pygame.K_s] and self.rect.y < ventana_alto - 180:
             self.rect.y += self.speed
 
     def update_l(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[pygame.K_DOWN] and self.rect.y < ventana_alto - 80:
+        if keys[pygame.K_DOWN] and self.rect.y < ventana_alto - 180:
             self.rect.y += self.speed
 
 class Ball(GameSprite):
@@ -147,11 +157,15 @@ def play():
                 tenis_ball.rect.left = P1.rect.right
                 tenis_ball.speed_x *= -1
                 rebotes += 1
+                pygame.mixer.music.load('hit.ogg')
+                pygame.mixer.music.play()
 
             if pygame.sprite.collide_rect(P2, tenis_ball):
                 tenis_ball.rect.right = P2.rect.left
                 tenis_ball.speed_x *= -1
                 rebotes += 1
+                pygame.mixer.music.load('hit.ogg')
+                pygame.mixer.music.play()
 
             # Condición de victoria
             if tenis_ball.rect.x < 0:
@@ -225,11 +239,11 @@ def main_menu():
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
         MENU_TEXT = get_font(100).render("Ping Pong", True, "#b68f40")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+        MENU_RECT = MENU_TEXT.get_rect(center=(650, 100))
 
         PLAY_BUTTON = Button(image=None, pos=(640, 250), 
                             text_input="Multiplayer", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        Practice_mode_BUTTON = Button(image=None, pos=(640, 400), 
+        Practice_mode_BUTTON = Button(image=None, pos=(570, 400), 
                             text_input="  Practice mode", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=None, pos=(640, 550), 
                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
