@@ -187,9 +187,9 @@ def pause():
         SCREEN.blit(TEXTO_PAUSA, RECT_PAUSA)
 
         BTN_CONTINUAR = Button(image=None, pos=(ventana_ancho // 2, 350), 
-                            text_input="CONTINUE", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
+                            text_input="CONTINUE", font=get_font(60), base_color="#8a8a8a", hovering_color="White")
         BTN_MENU = Button(image=None, pos=(ventana_ancho // 2, 500), 
-                            text_input="EXIT TO MENU", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
+                            text_input="EXIT TO MENU", font=get_font(60), base_color="#8a8a8a", hovering_color="White")
 
         for boton in [BTN_CONTINUAR, BTN_MENU]:
             boton.changeColor(MOUSE_POS)
@@ -265,17 +265,17 @@ def scoreboard_screen():
         y_offset = 220
         
         if not scores:
-            txt = get_font(60).render("There are no saved scores yet.", True, "White")
+            txt = get_font(20).render("There are no saved scores yet.", True, "White")
             SCREEN.blit(txt, txt.get_rect(center=(ventana_ancho//2, y_offset)))
         else:
             for i, s in enumerate(scores):
                 texto = f"{i+1}. {s['name']} - {s['score']} streak"
-                txt_surface = get_font(60).render(texto, True, "White")
+                txt_surface = get_font(20).render(texto, True, "White")
                 SCREEN.blit(txt_surface, txt_surface.get_rect(center=(ventana_ancho//2, y_offset)))
                 y_offset += 45
                 
         BTN_VOLVER = Button(image=None, pos=(ventana_ancho//2, ventana_alto - 80), 
-                            text_input="BACK", font=get_font(50), base_color="#d7fcd4", hovering_color="White")
+                            text_input="BACK", font=get_font(50), base_color="#8a8a8a", hovering_color="White")
         
         BTN_VOLVER.changeColor(MOUSE_POS)
         BTN_VOLVER.update(SCREEN)
@@ -470,13 +470,13 @@ def main_menu():
 
         # BOTONES REORGANIZADOS (ajusté un poco el tamaño de fuente y la altura)
         PLAY_BUTTON = Button(image=None, pos=(ventana_ancho // 2, 280), 
-                            text_input="Multiplayer", font=get_font(55), base_color="#d7fcd4", hovering_color="White")
+                            text_input="Multiplayer", font=get_font(55), base_color="#8a8a8a", hovering_color="White")
         PRACTICE_BUTTON = Button(image=None, pos=(ventana_ancho // 2, 390), 
-                            text_input="Practice mode", font=get_font(55), base_color="#d7fcd4", hovering_color="White")
+                            text_input="Practice mode", font=get_font(55), base_color="#8a8a8a", hovering_color="White")
         SCORES_BUTTON = Button(image=None, pos=(ventana_ancho // 2, 500), 
-                            text_input="Score list", font=get_font(55), base_color="#d7fcd4", hovering_color="White")
+                            text_input="Score list", font=get_font(55), base_color="#8a8a8a", hovering_color="White")
         QUIT_BUTTON = Button(image=None, pos=(ventana_ancho // 2, 610), 
-                            text_input="Exit", font=get_font(55), base_color="#d7fcd4", hovering_color="White")
+                            text_input="Exit", font=get_font(55), base_color="#8a8a8a", hovering_color="White")
 
         # Dibujar y actualizar los botones
         for button in [PLAY_BUTTON, PRACTICE_BUTTON, SCORES_BUTTON, QUIT_BUTTON]:
