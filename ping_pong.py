@@ -265,12 +265,12 @@ def scoreboard_screen():
         y_offset = 220
         
         if not scores:
-            txt = font2.render("There are no saved scores yet.", True, "White")
+            txt = get_font(60).render("There are no saved scores yet.", True, "White")
             SCREEN.blit(txt, txt.get_rect(center=(ventana_ancho//2, y_offset)))
         else:
             for i, s in enumerate(scores):
                 texto = f"{i+1}. {s['name']} - {s['score']} streak"
-                txt_surface = font2.render(texto, True, "White")
+                txt_surface = get_font(60).render(texto, True, "White")
                 SCREEN.blit(txt_surface, txt_surface.get_rect(center=(ventana_ancho//2, y_offset)))
                 y_offset += 45
                 
